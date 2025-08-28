@@ -152,4 +152,69 @@ module suidao::dao {
 
         transfer::share_object(dao_state);
     }
+
+    // =========== Public Getter Functions ===========
+
+    /// Get the admin of the config
+    public fun admin(config: &Config): address {
+        config.admin
+    }
+
+    /// Get the developer wallet of the config
+    public fun developer_wallet(config: &Config): address {
+        config.developer_wallet
+    }
+
+    /// Get the authority of the DAO
+    public fun authority<T>(dao: &DaoState<T>): address {
+        dao.authority
+    }
+
+    /// Get the threshold of the DAO
+    public fun threshold<T>(dao: &DaoState<T>): u8 {
+        dao.threshold
+    }
+
+    /// Get the vote duration of the DAO
+    public fun vote_duration<T>(dao: &DaoState<T>): u64 {
+        dao.vote_duration
+    }
+
+    /// Get the quorum of the DAO
+    public fun quorum<T>(dao: &DaoState<T>): u32 {
+        dao.quorum
+    }
+
+    /// Get the staking yield rate of the DAO
+    public fun staking_yield_rate<T>(dao: &DaoState<T>): u16 {
+        dao.staking_yield_rate
+    }
+
+    /// Get the pass threshold percentage of the DAO
+    public fun pass_threshold_percentage<T>(dao: &DaoState<T>): u8 {
+        dao.pass_threshold_percentage
+    }
+
+    /// Get the minimum staking amount of the DAO
+    public fun min_staking_amount<T>(dao: &DaoState<T>): u64 {
+        dao.min_staking_amount
+    }
+
+    /// Check if an address is a signer
+    public fun is_signer<T>(dao: &DaoState<T>, addr: &address): bool {
+        vec_set::contains(&dao.signers, addr)
+    }
+
+    /// Get the number of signers
+    public fun signers_count<T>(dao: &DaoState<T>): u64 {
+        dao.signers.length()
+    }
+
+    // =========== Test-only Functions ===========
+
+    #[test_only]
+    /// Initialize the module for testing
+    public fun init_for_testing(ctx: &mut TxContext) {
+        init(ctx);
+    }
 }
