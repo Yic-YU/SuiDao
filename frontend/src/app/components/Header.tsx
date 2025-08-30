@@ -9,10 +9,14 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl">🚀</span>
-            <span className="text-xl font-bold text-white dark:text-slate-100">
-              SuiDao
+          <Link href="/" className="flex items-center space-x-3 group">
+            <img 
+              src="/sui-sui-logo.svg" 
+              alt="Sui Logo" 
+              className="w-8 h-8 transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-indigo-200 dark:from-white dark:via-blue-50 dark:to-indigo-100 tracking-wide">
+              Agora
             </span>
           </Link>
 
@@ -20,25 +24,25 @@ export default function Header() {
           <nav className="hidden md:flex items-center space-x-8">
             <Link 
               href="/" 
-              className="text-blue-200 dark:text-blue-300 hover:text-white dark:hover:text-slate-100 transition-colors duration-200 font-medium"
+              className="text-blue-100 dark:text-blue-200 hover:text-white dark:hover:text-slate-50 transition-all duration-300 font-semibold tracking-wide hover:scale-105 transform"
             >
               首页
             </Link>
             <Link 
               href="/dao/create" 
-              className="text-blue-200 dark:text-blue-300 hover:text-white dark:hover:text-slate-100 transition-colors duration-200 font-medium"
+              className="text-blue-100 dark:text-blue-200 hover:text-white dark:hover:text-slate-50 transition-all duration-300 font-semibold tracking-wide hover:scale-105 transform"
             >
               创建DAO
             </Link>
             <Link 
               href="/dao/list" 
-              className="text-blue-200 dark:text-blue-300 hover:text-white dark:hover:text-slate-100 transition-colors duration-200 font-medium"
+              className="text-blue-100 dark:text-blue-200 hover:text-white dark:hover:text-slate-50 transition-all duration-300 font-semibold tracking-wide hover:scale-105 transform"
             >
               DAO列表
             </Link>
             <Link 
               href="/proposals" 
-              className="text-blue-200 dark:text-blue-300 hover:text-white dark:hover:text-slate-100 transition-colors duration-200 font-medium"
+              className="text-blue-100 dark:text-blue-200 hover:text-white dark:hover:text-slate-50 transition-all duration-300 font-semibold tracking-wide hover:scale-105 transform"
             >
               提案
             </Link>
