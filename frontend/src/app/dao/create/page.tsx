@@ -44,7 +44,7 @@ export default function CreateDaoPage() {
 
   if (!account) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-400 to-indigo-600 dark:from-blue-950 dark:via-blue-700 dark:to-indigo-800">
+      <div className="min-h-screen">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-md mx-auto text-center">
             <div className="bg-yellow-50/90 dark:bg-yellow-900/20 backdrop-blur-sm border border-yellow-200 dark:border-yellow-800 rounded-lg p-6">
@@ -59,7 +59,7 @@ export default function CreateDaoPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-400 to-indigo-600 dark:from-blue-950 dark:via-blue-700 dark:to-indigo-800">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">

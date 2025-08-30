@@ -119,7 +119,7 @@ export default function ProposalsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-800 via-blue-400 to-indigo-600 dark:from-blue-950 dark:via-blue-700 dark:to-indigo-800">
+    <div className="min-h-screen">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
           {/* 页面标题 */}
