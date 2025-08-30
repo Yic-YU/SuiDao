@@ -2,6 +2,8 @@
 
 /// A DAO module that combines multi-sig approval with token-based voting.
 module suidao::dao {
+    // friend suidao::proposal; // This is deprecated and removed.
+
     // 不再需要导入 suidao::errors
     // use suidao::errors;
 
@@ -48,6 +50,7 @@ module suidao::dao {
         threshold: u8,
         vote_duration: u64,
         total_staked_amount: u64,
+        proposal_count: u64,
         quorum: u32,
         staking_yield_rate: u16,
         pass_threshold_percentage: u8,
@@ -95,6 +98,7 @@ module suidao::dao {
             threshold,
             vote_duration: vote_duration_ms,
             total_staked_amount: 0,
+            proposal_count: 0,
             quorum,
             staking_yield_rate,
             pass_threshold_percentage,
@@ -159,5 +163,14 @@ module suidao::dao {
     /// Get the number of signers
     public fun signers_count(dao: &DaoState): u64 {
         dao.signers.length()
+    }
+
+    /// Increments the proposal count and returns the old value as the new proposal ID.
+    /// This function is marked as `public(package)` and can only be called by other
+    /// modules within the same package (i.e., the `proposal` module).
+    public(package) fun next_proposal_id(dao_state: &mut DaoState): u64 {
+        let id = dao_state.proposal_count;
+        dao_state.proposal_count = id + 1;
+        id
     }
 }
