@@ -7,9 +7,9 @@ export default function Home() {
   const account = useCurrentAccount();
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-blue-800 via-blue-400 to-indigo-600 dark:from-blue-950 dark:via-blue-700 dark:to-indigo-800">
+    <div className="relative min-h-screen">
       {/* 水滴背景装饰 */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 z-10 overflow-hidden">
         {/* 大水滴水印 */}
         <div className="absolute -left-32 -top-32 w-[500px] h-[500px] waterdrop"></div>
         <div className="absolute -left-20 -top-20 w-96 h-96 waterdrop-indigo"></div>

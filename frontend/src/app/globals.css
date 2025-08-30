@@ -54,6 +54,36 @@ body {
   }
 }
 
+/* 添加logo背景遮罩效果 */
+body::before {
+  content: '';
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: url('/sui-sui-logo.svg') center center / 1000px auto no-repeat !important;
+  opacity: 0.15 !important;
+  pointer-events: none !important;
+  z-index: -10 !important;
+  filter: blur(0.5px) !important;
+}
+
+/* 添加第二个logo层，创造深度效果 */
+body::after {
+  content: '';
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: url('/sui-sui-logo.svg') center center / 1200px auto no-repeat !important;
+  opacity: 0.08 !important;
+  pointer-events: none !important;
+  z-index: -20 !important;
+  filter: blur(1px) !important;
+}
+
 /* 水滴效果样式 */
 .waterdrop {
   background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.4) 0%, rgba(59, 130, 246, 0.2) 50%, rgba(59, 130, 246, 0.1) 80%, transparent 100%);
