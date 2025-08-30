@@ -1,8 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #1e40af;
+  --foreground: #ffffff;
+  --sui-blue-light: #3b82f6;
+  --sui-blue-medium: #1d4ed8;
+  --sui-blue-dark: #1e3a8a;
+  --sui-indigo-light: #4f46e5;
+  --sui-indigo-medium: #3730a3;
 }
 
 @theme inline {
@@ -14,13 +19,37 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0f172a;
+    --foreground: #f1f5f9;
+    --sui-blue-light: #1e40af;
+    --sui-blue-medium: #1d4ed8;
+    --sui-blue-dark: #1e3a8a;
+    --sui-indigo-light: #3730a3;
+    --sui-indigo-medium: #312e81;
   }
 }
 
 body {
-  background: var(--background);
+  background: 
+    radial-gradient(ellipse at top left, #1e3a8a 0%, transparent 50%),
+    radial-gradient(ellipse at top right, #3730a3 0%, transparent 50%),
+    radial-gradient(ellipse at bottom left, #1e40af 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, #4338ca 0%, transparent 50%),
+    linear-gradient(135deg, #3b82f6 0%, #6366f1 50%, #8b5cf6 100%);
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* 为深色模式添加渐变背景 */
+@media (prefers-color-scheme: dark) {
+  body {
+    background: 
+      radial-gradient(ellipse at top left, #0f172a 0%, transparent 50%),
+      radial-gradient(ellipse at top right, #1e1b4b 0%, transparent 50%),
+      radial-gradient(ellipse at bottom left, #1e3a8a 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, #3730a3 0%, transparent 50%),
+      linear-gradient(135deg, #1e40af 0%, #4338ca 50%, #7c3aed 100%);
+  }
 }
