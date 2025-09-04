@@ -269,4 +269,108 @@ module suidao::proposal {
         }
     }
 
+    /// Helper: create ProposalType variant for updating threshold
+    public fun make_update_threshold(new_threshold: u8): ProposalType {
+        let action = DaoUpdateAction {
+            update_threshold: option::some(UpdateThresholdAction { new_threshold }),
+            update_vote_duration: option::none(),
+            update_quorum: option::none(),
+            update_staking_yield: option::none(),
+            update_pass_threshold: option::none(),
+            update_min_staking: option::none(),
+        };
+        ProposalType {
+            update_dao: option::some(UpdateDao { action }),
+            withdraw_treasury: option::none(),
+        }
+    }
+
+    /// Helper: create ProposalType variant for updating vote duration (ms)
+    public fun make_update_vote_duration(new_vote_duration_ms: u64): ProposalType {
+        let action = DaoUpdateAction {
+            update_threshold: option::none(),
+            update_vote_duration: option::some(UpdateVoteDurationAction { new_vote_duration_ms }),
+            update_quorum: option::none(),
+            update_staking_yield: option::none(),
+            update_pass_threshold: option::none(),
+            update_min_staking: option::none(),
+        };
+        ProposalType {
+            update_dao: option::some(UpdateDao { action }),
+            withdraw_treasury: option::none(),
+        }
+    }
+
+    /// Helper: create ProposalType variant for updating quorum
+    public fun make_update_quorum(new_quorum: u32): ProposalType {
+        let action = DaoUpdateAction {
+            update_threshold: option::none(),
+            update_vote_duration: option::none(),
+            update_quorum: option::some(UpdateQuorumAction { new_quorum }),
+            update_staking_yield: option::none(),
+            update_pass_threshold: option::none(),
+            update_min_staking: option::none(),
+        };
+        ProposalType {
+            update_dao: option::some(UpdateDao { action }),
+            withdraw_treasury: option::none(),
+        }
+    }
+
+    /// Helper: create ProposalType variant for updating staking yield
+    public fun make_update_staking_yield(new_staking_yield_rate: u16): ProposalType {
+        let action = DaoUpdateAction {
+            update_threshold: option::none(),
+            update_vote_duration: option::none(),
+            update_quorum: option::none(),
+            update_staking_yield: option::some(UpdateStakingYieldAction { new_staking_yield_rate }),
+            update_pass_threshold: option::none(),
+            update_min_staking: option::none(),
+        };
+        ProposalType {
+            update_dao: option::some(UpdateDao { action }),
+            withdraw_treasury: option::none(),
+        }
+    }
+
+    /// Helper: create ProposalType variant for updating pass threshold percentage
+    public fun make_update_pass_threshold(new_pass_threshold_percentage: u8): ProposalType {
+        let action = DaoUpdateAction {
+            update_threshold: option::none(),
+            update_vote_duration: option::none(),
+            update_quorum: option::none(),
+            update_staking_yield: option::none(),
+            update_pass_threshold: option::some(UpdatePassThresholdAction { new_pass_threshold_percentage }),
+            update_min_staking: option::none(),
+        };
+        ProposalType {
+            update_dao: option::some(UpdateDao { action }),
+            withdraw_treasury: option::none(),
+        }
+    }
+
+    /// Helper: create ProposalType variant for updating min staking amount
+    public fun make_update_min_staking(new_min_staking_amount: u64): ProposalType {
+        let action = DaoUpdateAction {
+            update_threshold: option::none(),
+            update_vote_duration: option::none(),
+            update_quorum: option::none(),
+            update_staking_yield: option::none(),
+            update_pass_threshold: option::none(),
+            update_min_staking: option::some(UpdateMinStakingAction { new_min_staking_amount }),
+        };
+        ProposalType {
+            update_dao: option::some(UpdateDao { action }),
+            withdraw_treasury: option::none(),
+        }
+    }
+
+    /// Helper: create ProposalType variant for withdrawing treasury
+    public fun make_withdraw_treasury(amount: u64, recipient: address): ProposalType {
+        ProposalType {
+            update_dao: option::none(),
+            withdraw_treasury: option::some(WithdrawTreasury { amount, recipient }),
+        }
+    }
+
 }
