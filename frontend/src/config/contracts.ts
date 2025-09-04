@@ -2,9 +2,14 @@
 export const CONTRACT_CONFIG = {
   // 开发环境配置
   development: {
-    PACKAGE_ID: '0xc9e726426480ad6f48cb253f37e1846c0a8516e2133847d0f724c44d8da60960', // devnet部署的包ID
+    PACKAGE_ID: '0x6193339bf0aefb0034d21d238f076d51641c1349f54e8a283f108fb5f8fd443a', // devnet部署的包ID
     MODULE_NAME: 'dao',
     FUNCTION_NAME: 'initialize_dao',
+    PROPOSAL_MODULE: 'proposal',
+    PROPOSAL_FUNCTIONS: {
+      CREATE_PROPOSAL: 'create_proposal',
+      APPROVE_PROPOSAL: 'approve_proposal',
+    },
     NETWORK: 'devnet',
   },
   
@@ -13,6 +18,11 @@ export const CONTRACT_CONFIG = {
     PACKAGE_ID: '0x0', // 测试网还未部署
     MODULE_NAME: 'dao',
     FUNCTION_NAME: 'initialize_dao',
+    PROPOSAL_MODULE: 'proposal',
+    PROPOSAL_FUNCTIONS: {
+      CREATE_PROPOSAL: 'create_proposal',
+      APPROVE_PROPOSAL: 'approve_proposal',
+    },
     NETWORK: 'testnet',
   },
   
@@ -21,6 +31,11 @@ export const CONTRACT_CONFIG = {
     PACKAGE_ID: '0x0', // 主网还未部署
     MODULE_NAME: 'dao',
     FUNCTION_NAME: 'initialize_dao',
+    PROPOSAL_MODULE: 'proposal',
+    PROPOSAL_FUNCTIONS: {
+      CREATE_PROPOSAL: 'create_proposal',
+      APPROVE_PROPOSAL: 'approve_proposal',
+    },
     NETWORK: 'mainnet',
   },
 };
