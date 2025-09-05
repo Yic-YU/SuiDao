@@ -1,0 +1,7 @@
+# Ignore Rust build output
+target/
+
+# Optional: IDE noise (uncomment if needed)
+# .DS_Store
+# .idea/
+# .vscode/
