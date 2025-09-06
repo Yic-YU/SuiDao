@@ -1,6 +1,10 @@
 use crate::models::*;
 use anyhow::Result;
 use sqlx::{PgPool, Row};
+use sqlx::postgres::PgPoolOptions;
+use std::time::Duration;
+use tokio::time::sleep;
+use tracing::{info, warn};
 use uuid::Uuid;
 
 #[derive(Clone)]
@@ -10,12 +14,30 @@ pub struct Database {
 
 impl Database {
     pub async fn new(database_url: &str) -> Result<Self> {
-        let pool = PgPool::connect(database_url).await?;
-        
-        // 运行数据库迁移
-        sqlx::migrate!("./migrations").run(&pool).await?;
-        
-        Ok(Database { pool })
+        // 为了容忍 Postgres 刚启动未就绪，这里增加重试与更小的连接池
+        let mut last_err: Option<sqlx::Error> = None;
+        for attempt in 1..=30u32 {
+            match PgPoolOptions::new()
+                .max_connections(5)
+                .acquire_timeout(Duration::from_secs(5))
+                .connect(database_url)
+                .await
+            {
+                Ok(pool) => {
+                    // 运行数据库迁移
+                    sqlx::migrate!("./migrations").run(&pool).await?;
+                    info!("数据库连接成功");
+                    return Ok(Database { pool });
+                }
+                Err(e) => {
+                    last_err = Some(e);
+                    warn!("数据库未就绪，重试 {}/30...", attempt);
+                    sleep(Duration::from_secs(2)).await;
+                }
+            }
+        }
+
+        Err(last_err.unwrap_or_else(|| sqlx::Error::PoolTimedOut).into())
     }
 
     // DAO相关操作
