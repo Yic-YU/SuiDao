@@ -25,7 +25,7 @@ impl Config {
             .unwrap_or_else(|_| "https://fullnode.testnet.sui.io:443".to_string());
         
         let package_id = env::var("PACKAGE_ID")
-            .unwrap_or_else(|_| "0x1234567890abcdef".to_string());
+            .unwrap_or_else(|_| "0x452132cebeab22eb484ea649bf5f2145b1eb5d49a1bf5993ed6a3bfe2e741d24".to_string());
         
         let dao_module = env::var("DAO_MODULE")
             .unwrap_or_else(|_| "dao".to_string());

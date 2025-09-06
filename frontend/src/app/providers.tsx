@@ -37,7 +37,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <SuiClientProvider 
         networks={networks} 
-        defaultNetwork="devnet"
+        defaultNetwork="testnet"
       >
         <WalletProvider 
           autoConnect={false}

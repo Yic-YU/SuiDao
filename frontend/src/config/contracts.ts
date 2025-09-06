@@ -2,7 +2,7 @@
 export const CONTRACT_CONFIG = {
   // 开发环境配置
   development: {
-    PACKAGE_ID: '0x6193339bf0aefb0034d21d238f076d51641c1349f54e8a283f108fb5f8fd443a', // devnet部署的包ID
+    PACKAGE_ID: '0x452132cebeab22eb484ea649bf5f2145b1eb5d49a1bf5993ed6a3bfe2e741d24', // 测试网包ID（本地也指向测试网）
     MODULE_NAME: 'dao',
     FUNCTION_NAME: 'initialize_dao',
     PROPOSAL_MODULE: 'proposal',
@@ -10,12 +10,12 @@ export const CONTRACT_CONFIG = {
       CREATE_PROPOSAL: 'create_proposal',
       APPROVE_PROPOSAL: 'approve_proposal',
     },
-    NETWORK: 'devnet',
+    NETWORK: 'testnet',
   },
   
   // 测试网配置
   testnet: {
-    PACKAGE_ID: '0x0', // 测试网还未部署
+    PACKAGE_ID: '0x452132cebeab22eb484ea649bf5f2145b1eb5d49a1bf5993ed6a3bfe2e741d24', // 来自 programs/Move.lock 的 latest-published-id
     MODULE_NAME: 'dao',
     FUNCTION_NAME: 'initialize_dao',
     PROPOSAL_MODULE: 'proposal',

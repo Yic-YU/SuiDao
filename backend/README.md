@@ -16,8 +16,8 @@ docker compose up -d
 Create a `.env` (or export env vars) in `backend/` (values match Docker Compose):
 
 DATABASE_URL=postgres://suidao:suidao@localhost:5432/suidao
-SUI_RPC_URL=https://fullnode.devnet.sui.io:443
-PACKAGE_ID=0x6193339bf0aefb0034d21d238f076d51641c1349f54e8a283f108fb5f8fd443a
+SUI_RPC_URL=https://fullnode.testnet.sui.io:443
+PACKAGE_ID=0x452132cebeab22eb484ea649bf5f2145b1eb5d49a1bf5993ed6a3bfe2e741d24
 DAO_MODULE=dao
 PROPOSAL_MODULE=proposal
 PORT=3001
